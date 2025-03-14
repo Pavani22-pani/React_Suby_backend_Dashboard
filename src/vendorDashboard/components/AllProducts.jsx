@@ -1,11 +1,13 @@
-import React,{useEffect, useState,useffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import { API_PATH } from '../helpers/ApiPath'
 
 const AllProducts=()=>{
     const [products,setProducts]=useState([])
     
     const productSHandler=async()=>{
-        const {firmId}=localStorage.getItem("firmId")
+        const firmId = localStorage.getItem("firmId");
+        console.log("Retrieved firmId:", firmId);
+
         try {
             const response=await fetch(`${API_PATH}/product/${firmId}/products`)
             const newProductsData=await response.json()
@@ -39,7 +41,7 @@ const AllProducts=()=>{
     },[])
     return (
         <div>
-            {!products ?(
+            {products.length==0 ?(
                 <p>No products added </p>) : (
                     <table className="product-table">
                         <thead>

@@ -80,6 +80,8 @@ const AddFirm = () => {
             
             const data = await response.json();
             console.log("Response Data:", data);
+            
+           
     
             if (!response.ok) {
                 console.error("Server Error:", data);
@@ -98,25 +100,26 @@ const AddFirm = () => {
             // for to add product based on firmid
             const firmId=data.firmId
             localStorage.setItem("firmId",firmId)
-            // const vendorResponse = await fetch(`${API_PATH}/vendor/single-vendor/${vendorId}`);
-            // const vendorData = await vendorResponse.json();
+        
+            const vendorResponse = await fetch(`${API_PATH}/vendor/single-vendor/${vendorId}`);
+            const vendorData = await vendorResponse.json();
 
-            // if (!vendorResponse.ok) {
-            //     console.error("Failed to fetch vendor details:", vendorData.message || "Unknown error");
-            //     alert(vendorData.message || "Failed to fetch vendor details.");
-            //     return;
-            // }
+            if (!vendorResponse.ok) {
+                console.error("Failed to fetch vendor details:", vendorData.message || "Unknown error");
+                alert(vendorData.message || "Failed to fetch vendor details.");
+                return;
+            }
 
-            // const vendorFirm= vendorData.firm;
-            // console.log("Checking for FirmId", vendorFirm);
+            const vendorFirm= vendorData.firm;
+            console.log("Checking for FirmId", vendorFirm);
 
-            // if (vendorFirm) {
-            //     localStorage.setItem("firmName",vendorFirm.firmName)
-            //     window.location.reload()
+            if (vendorFirm) {
+                localStorage.setItem("firmName",vendorFirm.firmName)
+                window.location.reload()
                 
-            // } else {
-            //     console.error("Firm is missing from vendor data");
-            // }
+            } else {
+                console.error("Firm is missing from vendor data");
+            }
 
 
         } catch (error) {
