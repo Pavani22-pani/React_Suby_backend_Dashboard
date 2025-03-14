@@ -206,3 +206,25 @@ body{
 h3{
     color: #D7263D;
 }
+/* welcome Section */
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #f3efef; /* White background */
+
+}
+
+.welcome-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.welcome-image {
+    width: 300px; /* Adjust based on requirement */
+    height: auto;
+}
